@@ -1,0 +1,12 @@
+.dot {
+    height: 80px;
+    width: 80px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    padding-top: 22px;
+    margin-left: 3%;
+  }
+
+  
