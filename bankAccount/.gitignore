@@ -1,0 +1,26 @@
+######################
+# Eclipse
+######################
+
+.project
+
+.metadata
+
+local.properties
+.classpath
+.settings/
+
+
+######################
+# Maven
+######################
+
+/target/
+
+
+######################
+# Package Files
+######################
+*.jar
+
+
