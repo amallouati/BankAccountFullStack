@@ -22,6 +22,7 @@ public class ObjectsMappers {
 
 		AccountDto dto = AccountDto.builder().id(account.getId()).balance(account.getBalance())
 				.libelle(account.getLibelle()).operations(operations).build();
+		
 		return dto;
 	}
 
