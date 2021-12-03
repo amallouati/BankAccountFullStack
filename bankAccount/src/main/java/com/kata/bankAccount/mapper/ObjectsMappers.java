@@ -15,28 +15,20 @@ import com.kata.bankAccount.entity.Operation;
 public class ObjectsMappers {
 
 	public AccountDto mapEntityAccountToDto(Account account) {
-		
+
 		List<OperationDto> operations = account.getOperations().stream()
 				.map(operation -> mapEntityOperationToDto(operation))
 				.sorted(Comparator.comparing(OperationDto::getDate).reversed()).collect(Collectors.toList());
-			
-		AccountDto dto=AccountDto.builder()
-		.id(account.getId())
-		.balance(account.getBalance())
-		.libelle(account.getLibelle())
-		.operations(operations)
-		.build();
-	
+
+		AccountDto dto = AccountDto.builder().id(account.getId()).balance(account.getBalance())
+				.libelle(account.getLibelle()).operations(operations).build();
+
 		return dto;
 	}
 
 	public OperationDto mapEntityOperationToDto(Operation operation) {
-		return OperationDto.builder()
-		.id(operation.getId())
-		.date(operation.getDate())
-		.type(operation.getType())
-		.amount(operation.getAmount())
-		.build();
+		return OperationDto.builder().id(operation.getId()).date(operation.getDate()).type(operation.getType())
+				.amount(operation.getAmount()).build();
 
 	}
 
