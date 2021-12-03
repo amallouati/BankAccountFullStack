@@ -8,9 +8,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalErrorHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(OperationFailException.class)
-    public ResponseEntity<Object> handleOperationFailException(final OperationFailException ex) {
-        String bodyOfResponse = "No account matched provided Id";
-        return ResponseEntity.badRequest().body(bodyOfResponse+ex.getMessage());
-    }
+	@ExceptionHandler(OperationFailException.class)
+	public ResponseEntity<Object> handleOperationFailException(final OperationFailException ex) {
+		String bodyOfResponse = "No account matched provided Id";
+		return ResponseEntity.badRequest().body(bodyOfResponse + ex.getMessage());
+	}
 }

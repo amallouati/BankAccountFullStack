@@ -1,6 +1,6 @@
 package com.kata.bankAccount.test.services;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -10,7 +10,7 @@ import org.mockito.Mock;
 
 
 import java.time.Instant;
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +33,10 @@ import com.kata.bankAccount.entity.Account;
 import com.kata.bankAccount.entity.Operation;
 import com.kata.bankAccount.entity.OperationType;
 import com.kata.bankAccount.exception.OperationFailException;
+import com.kata.bankAccount.mapper.ObjectsMappers;
 import com.kata.bankAccount.repository.BankAccountRepository;
 import com.kata.bankAccount.repository.OperationRepository;
 import com.kata.bankAccount.service.impl.OperationServiceImpl;
-import com.kata.bankAccount.services.ObjectsMappers;
 
 @RunWith(SpringRunner.class)
 public class OperationServiceTest {
@@ -67,11 +67,11 @@ public class OperationServiceTest {
         account.setBalance(5000L);
         account.setId(12L);
         account.setOperations(new ArrayList<>());
-        operation = new Operation(LocalDate.now(), OperationType.DEPOSIT,10000L, null);
-        operationWithdrawal=new Operation(LocalDate.now(), OperationType.WITHDRAWAL,1000L, null);
-        operationWithdrawalDtoFail=new OperationDto(1L,LocalDate.now(), OperationType.WITHDRAWAL,6000L);
-        operationWithdrawalDtoSuccess=new OperationDto(1L,LocalDate.now(), OperationType.WITHDRAWAL,2000L);
-        operation2 = new OperationDto(1L,LocalDate.now(), OperationType.DEPOSIT,1200L);
+		operation = new Operation(LocalDateTime.now(), OperationType.DEPOSIT,10000L, null);
+        operationWithdrawal=new Operation(LocalDateTime.now(), OperationType.WITHDRAWAL,1000L, null);
+        operationWithdrawalDtoFail=new OperationDto(1L,LocalDateTime.now(), OperationType.WITHDRAWAL,6000L);
+        operationWithdrawalDtoSuccess=new OperationDto(1L,LocalDateTime.now(), OperationType.WITHDRAWAL,2000L);
+        operation2 = new OperationDto(1L,LocalDateTime.now(), OperationType.DEPOSIT,1200L);
         OperationDto operation=new OperationDto();
         operation.setAmount(1200L);
     }

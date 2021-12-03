@@ -19,22 +19,22 @@ import com.kata.bankAccount.services.OperationService;
 @RequestMapping("/api/operation/")
 @CrossOrigin
 public class OperationsResources {
-	
-	 private final OperationService operationService;
-	 
-	 public OperationsResources(OperationService operationService) {
-		 this.operationService=operationService;
-	 }
-	
-	 @GetMapping("{accountId}/all")
-	    public List<OperationDto> getAllOperations(@PathVariable Long accountId)  {
-	        return operationService.findAllByAccountId(accountId);
-	    }
-	    
-	 
-	    @PostMapping(value = "{accountId}/add")
-	    public AccountDto addOperation(@PathVariable Long accountId, @RequestBody OperationDto operationdto) throws OperationFailException {
-	        return operationService.doTransaction(accountId, operationdto);
-	    }   
+
+	private final OperationService operationService;
+
+	public OperationsResources(OperationService operationService) {
+		this.operationService = operationService;
+	}
+
+	@GetMapping("{accountId}/all")
+	public List<OperationDto> getAllOperations(@PathVariable Long accountId) {
+		return operationService.findAllByAccountId(accountId);
+	}
+
+	@PostMapping(value = "{accountId}/add")
+	public AccountDto addOperation(@PathVariable Long accountId, @RequestBody OperationDto operationdto)
+			throws OperationFailException {
+		return operationService.doTransaction(accountId, operationdto);
+	}
 
 }

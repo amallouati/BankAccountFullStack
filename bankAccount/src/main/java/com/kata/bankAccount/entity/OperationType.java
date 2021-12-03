@@ -1,16 +1,12 @@
 package com.kata.bankAccount.entity;
 
-public enum  OperationType {
-	
-	     DEPOSIT("deposit"),
-	     WITHDRAWAL("withdrawal");
+public enum OperationType {
 
-	    String operation;
+	DEPOSIT("deposit"), WITHDRAWAL("withdrawal");
 
-	    OperationType(String operation){
-	        this.operation=operation;
-	    }
+	String operation;
+
+	OperationType(String operation) {
+		this.operation = operation;
+	}
 }
-
-
-

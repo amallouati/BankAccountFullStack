@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service;
 import com.kata.bankAccount.dto.AccountDto;
 import com.kata.bankAccount.entity.Account;
 import com.kata.bankAccount.exception.OperationFailException;
+import com.kata.bankAccount.mapper.ObjectsMappers;
 import com.kata.bankAccount.repository.BankAccountRepository;
 import com.kata.bankAccount.services.AccountService;
-import com.kata.bankAccount.services.ObjectsMappers;
-
-
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -24,30 +22,28 @@ public class AccountServiceImpl implements AccountService {
 	private final BankAccountRepository accountRepository;
 	private final ObjectsMappers dtoMapper;
 
-	public AccountServiceImpl(BankAccountRepository accountRepository,ObjectsMappers dtoMapper) {
+	public AccountServiceImpl(BankAccountRepository accountRepository, ObjectsMappers dtoMapper) {
 		this.accountRepository = accountRepository;
-		this.dtoMapper=dtoMapper;
+		this.dtoMapper = dtoMapper;
 	}
 
-	
 	/**
-    *
-    * @param accountId account identifier
-    * @return  the account state including operations
-    * @throws OperationFailException
-    */
-   public AccountDto printStatement(Long accountId) throws OperationFailException {
-       Optional<Account> optionalBankAccount = accountRepository.findById(accountId);
-       if(!optionalBankAccount.isPresent()){
-           throw new OperationFailException(": "+accountId);
-       }
-       return dtoMapper.mapEntityAccountToDto(optionalBankAccount.get());
-   }
-	
+	 *
+	 * @param accountId account identifier
+	 * @return the account state including operations
+	 * @throws OperationFailException
+	 */
+	public AccountDto printStatement(Long accountId) throws OperationFailException {
+		Optional<Account> optionalBankAccount = accountRepository.findById(accountId);
+		if (!optionalBankAccount.isPresent()) {
+			throw new OperationFailException(": " + accountId);
+		}
+		return dtoMapper.mapEntityAccountToDto(optionalBankAccount.get());
+	}
 
 	@Override
 	public Account save(Account account) {
-		
+
 		return accountRepository.save(account);
 	}
 
@@ -60,19 +56,20 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Optional<Account> findOne(Long id) {
-		
+
 		return accountRepository.findById(id);
 	}
 
 	@Override
 	public void delete(Long id) {
 		accountRepository.deleteById(id);
-		
+
 	}
 
 	@Override
 	public List<AccountDto> findAll() {
-		return accountRepository.findAll().stream().map(account->dtoMapper.mapEntityAccountToDto(account)).collect(Collectors.toList());
+		return accountRepository.findAll().stream().map(account -> dtoMapper.mapEntityAccountToDto(account))
+				.collect(Collectors.toList());
 	}
 
 }
